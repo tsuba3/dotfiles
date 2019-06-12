@@ -1,0 +1,14 @@
+include "/usr/local/Cellar/nano/4.2/share/nano/*.nanorc"
+set nowrap
+set smooth
+set suspend
+set tabsize 4
+set tabstospaces
+set autoindent
+set linenumbers
+set mouse
+#set titlecolor white,black
+set numbercolor yellow,black
+#set keycolor white,green
+#set functioncolor white,green
+
