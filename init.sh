@@ -1,16 +1,16 @@
 #!/bin/sh
 
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.nanorc ~/.nanorc
-ln -s ~/.dotfiles/.vimrc ~/.vimrc
-ln -s ~/.dotfiles/.vim ~/.vim
-ln -s ~/.dotfiles/zprezto ~/.zprezto
-ln -s ~/.dotfiles/zprezto/runcoms/zlogin ~/.zlogin
-ln -s ~/.dotfiles/zprezto/runcoms/zlogout ~/.zlogout
-ln -s ~/.dotfiles/zprezto/runcoms/zprezto ~/.zprezto
-ln -s ~/.dotfiles/zprezto/runcoms/zprofile ~/.zprofile
-ln -s ~/.dotfiles/zprezto/runcoms/zshenv ~/.zshenv
-ln -s ~/.dotfiles/zprezto/runcoms/zshrc ~/.zshrc
+ln -f -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -f -s ~/.dotfiles/.nanorc ~/.nanorc
+ln -f -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -f -s ~/.dotfiles/.vim ~/.vim
+ln -f -s ~/.dotfiles/zprezto ~/.zprezto
+ln -f -s ~/.dotfiles/zsh/zlogin ~/.zlogin
+ln -f -s ~/.dotfiles/zsh/zlogout ~/.zlogout
+ln -f -s ~/.dotfiles/zsh/zprezto ~/.zprezto
+ln -f -s ~/.dotfiles/zsh/zprofile ~/.zprofile
+ln -f -s ~/.dotfiles/zsh/zshenv ~/.zshenv
+ln -f -s ~/.dotfiles/zsh/zshrc ~/.zshrc
 
 
 cat << EOF
