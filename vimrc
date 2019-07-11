@@ -56,6 +56,8 @@ inoremap <silent> jj <ESC>
 syntax enable
 colorscheme molokai
 set t_Co=256
+" ESC を2回押したとき検索のハイライトを消す
+nnoremap <ESC><ESC> :nohl<CR>
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
