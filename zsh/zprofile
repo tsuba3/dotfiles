@@ -6,7 +6,7 @@
 #
 
 # TMUX を起動する。ログインシェルでのみ実行されるので分岐はいらないかも
-while [[ ! -n $TMUX ]]; do 
+while [[ ! -n $TMUX ]]; do
   # get the IDs
   ID="`tmux list-sessions`"
   if [[ ! -z "$ID" ]]; then
