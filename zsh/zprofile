@@ -14,7 +14,7 @@ while [[ ! -n $TMUX ]]; do
   fi
   create_new_session="Create New Session"
   ID="$ID${create_new_session}:"
-  ID="`echo $ID | fzf --tac | cut -d: -f1`"
+  ID="`echo $ID | fzf --tac --header 'Select or create a tmux session.' | cut -d: -f1`"
   if [[ "$ID" = "${create_new_session}" ]]; then
     tmux new-session
   elif [[ -n "$ID" ]]; then
