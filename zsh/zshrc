@@ -10,6 +10,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+if [ -n "$(command -v pyenv)" ]; then
+  eval "$(pyenv init -)"
+fi
+
 # Customize to your needs...
 
 #
@@ -137,7 +141,6 @@ export PDIR=~/Documents/Projects
 export PATH=~/.scala-2.12.6/bin:$PATH
 
 export PATH=/usr/local/Cellar/git/2.14.1/bin:$PATH
-eval "$(pyenv init -)"
 
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=~/.golang
