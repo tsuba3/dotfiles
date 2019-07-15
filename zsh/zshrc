@@ -10,10 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-if [ -n "$(command -v pyenv)" ]; then
-  eval "$(pyenv init -)"
-fi
-
 # Customize to your needs...
 
 #
@@ -175,5 +171,11 @@ source ~/.dotfiles/zsh/fzf-completion.zsh
 source ~/.dotfiles/zsh/fzf-key-bindings.zsh
 export FZF_COMPLETION_TRIGGER='**'
 export FZF_DEFAULT_COMMAND='ls -a -1'
+
+
+# Pyenv init must be excutated after setting PATH
+if [ -n "$(command -v pyenv)" ]; then
+  eval "$(pyenv init -)"
+fi
 
 
