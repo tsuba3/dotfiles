@@ -88,6 +88,12 @@ alias flutter-dev-tool='flutter packages pub global run devtools'
 # functions
 #
 
+# mkdircd - mkdir then cd
+mkdircd() {
+    mkdir $1
+    cd $1
+}
+
 # vimcp - edit file with vim and copy it
 vimcp() {
     vim $1
