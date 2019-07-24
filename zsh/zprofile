@@ -7,6 +7,13 @@
 
 # TMUX を起動する。ログインシェルでのみ実行されるので分岐はいらないかも
 while [[ ! -n $TMUX ]]; do
+  if [[ ! -n "$(command -v tmux)" ]]; then
+    echo "TMUX is not installed. Starting terminal normally."
+    break
+  fi
+  if [[ ! -n "$(command -v fzf)" ]]; then
+    tmux
+  fi
   # get the IDs
   ID="`tmux list-sessions`"
   if [[ ! -z "$ID" ]]; then
