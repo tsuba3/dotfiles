@@ -12,10 +12,10 @@ while [[ ! -n $TMUX ]]; do
     break
   fi
   if [[ ! -n "$(command -v fzf)" ]]; then
-    tmux
+    tmux > /dev/null 2>&1
   fi
   # get the IDs
-  ID="`tmux list-sessions`"
+  ID="`tmux list-sessions 2>/dev/null`"
   if [[ ! -z "$ID" ]]; then
     ID="$ID\n"
   fi
@@ -24,9 +24,9 @@ while [[ ! -n $TMUX ]]; do
   ID="$ID${create_new_session}:"
   ID="`echo $ID | fzf --height 50% --tac --header $fzf_header | cut -d: -f1`"
   if [[ "$ID" = "${create_new_session}" ]]; then
-    tmux new-session
+    tmux new-session > /dev/null 2>&1
   elif [[ -n "$ID" ]]; then
-    tmux attach-session -t "$ID"
+    tmux attach-session -t "$ID" > /dev/null 2>&1
   else
     break  # Start terminal normally
   fi
