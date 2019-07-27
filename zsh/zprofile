@@ -19,10 +19,13 @@ while [[ ! -n $TMUX ]]; do
   if [[ ! -z "$ID" ]]; then
     ID="$ID\n"
   fi
-  fzf_header="Select or create a tmux session. Ctrl-c to continue without tmux."
+  fzf_header="Select or create a tmux session. Ctrl-c to continue without tmux. Ctrl-d to exit terminal."
   create_new_session="Create New Session"
   ID="$ID${create_new_session}:"
-  ID="`echo $ID | fzf --height 50% --tac --header $fzf_header | cut -d: -f1`"
+  RESULT="`echo $ID | fzf --height 50% --tac --expect ctrl-d --header $fzf_header`"
+  KEY=`echo $RESULT | sed -n 1p`
+  ID=`echo $RESULT | sed -n 2p | cut -d: -f1`
+  if [[ "$KEY" = "ctrl-d" ]]; then; exit; fi
   if [[ "$ID" = "${create_new_session}" ]]; then
     tmux new-session > /dev/null 2>&1
   elif [[ -n "$ID" ]]; then
