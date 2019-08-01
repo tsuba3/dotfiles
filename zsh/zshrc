@@ -146,6 +146,7 @@ export PATH=/usr/local/Cellar/git/2.14.1/bin:$PATH
 
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=~/.golang
+export PATH=$PATH:$GOPATH/bin
 
 export QT_DIR=~/.Qt
 export CGO_CXXFLAGS_ALLOW=".*" 
