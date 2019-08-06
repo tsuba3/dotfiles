@@ -5,7 +5,8 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
+ENV_FILE="$HOME/.dotfiles/zsh/env/$(hostname).zsh"
+if [ -e $ENV_FILE ]; then
+    source $ENV_FILE
 fi
+
