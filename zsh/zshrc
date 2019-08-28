@@ -100,6 +100,12 @@ vimcp() {
     cat $1 | pbcopy
 }
 
+# pdfmin - Compress PDF
+pdfmin() {
+    command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.6 -dPDFSETTINGS=/ebook \
+    -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$1.min.pdf" "$1"
+}
+
 # fd - cd to selected directory
 fd() {
   local dir
