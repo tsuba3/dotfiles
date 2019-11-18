@@ -31,4 +31,9 @@ export PATH=~/.android-sdk/bin:$PATH
 
 export PATH=~/.flutter_tool/bin:$PATH
 
+export IDF_PATH=/Users/tsubasa/.esp/esp-idf
+export PATH=/Users/tsubasa/.esp/xtensa-esp32-elf/bin:$PATH
+alias idf="python2 $IDF_PATH/tools/idf.py"
+
+export PATH="$PATH:$HOME/.cargo/bin"
 
