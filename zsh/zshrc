@@ -97,7 +97,11 @@ mkdircd() {
 # vimcp - edit file with vim and copy it
 vimcp() {
     vim $1
-    cat $1 | pbcopy
+    if [ -e $1 ];  then
+        cat $1 | pbcopy
+    else
+        return 1
+    fi
 }
 
 # pdfmin - Compress PDF
