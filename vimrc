@@ -81,5 +81,7 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 
+" Molokai でコメントの色を少し明るくする
+hi Comment ctermfg=247
 
 
