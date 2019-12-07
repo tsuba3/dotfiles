@@ -167,7 +167,7 @@ export FZF_DEFAULT_COMMAND='ls -a -1'
 
 # keybind
 # bind ^L^L clear and tmux clear
-function _clear() { clear; tmux clear; zle reset-prompt; }
+function _clear() { clear; [[ -n "$TMUX" ]] && tmux clear; zle reset-prompt; }
 zle -N _clear
 bindkey "^L^L" _clear
 
