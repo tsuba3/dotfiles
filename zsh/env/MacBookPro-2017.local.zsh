@@ -37,3 +37,10 @@ alias idf="python2 $IDF_PATH/tools/idf.py"
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
+
+# Docker run alias
+alias docker-latex='docker run -w="/work" -v "$(pwd):/work" --rm tsuba3/latex'
+for COMMAND (latex platex uplatex latexmk dvipdfmx) \
+    alias $COMMAND="docker-latex $COMMAND"
+
+
