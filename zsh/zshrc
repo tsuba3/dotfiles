@@ -153,6 +153,12 @@ fkill() {
   fi
 }
 
+# Compile and run a single c++ file.
+cpprun() {
+    TEMP="/tmp/$RANDOM"
+    g++-9 -o "$TEMP" -std=c++14 $@ && $TEMP && rm -f $TEMP
+}
+
 setopt nonomatch
 
 # Auto suggestions of command
