@@ -4,7 +4,8 @@ Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
-
+" メニューを英語にする
+language en_US
 "文字コードをUFT-8に設定
 set fenc=utf-8
 " バックアップファイルを作らない
