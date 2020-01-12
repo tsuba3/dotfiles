@@ -157,7 +157,11 @@ fkill() {
 # Compile and run a single c++ file.
 cpprun() {
     TEMP="/tmp/$RANDOM"
-    g++-9 -o "$TEMP" -std=c++14 $@ && $TEMP && rm -f $TEMP
+    if [ -n "$Boost_INCLUDE_DIR" ]; then
+        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIR" $@ && $TEMP && rm -f $TEMP
+    else
+        g++-9 -o "$TEMP" -std=c++14 $@ && $TEMP && rm -f $TEMP
+    fi
 }
 
 setopt nonomatch
