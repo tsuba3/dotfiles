@@ -39,9 +39,3 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 export Boost_INCLUDE_DIR=/usr/local/Cellar/boost/1.71.0/include
 
-# Docker run alias
-alias docker-latex='docker run -it -w="/work" -v "$(pwd):/work" --rm tsuba3/latex'
-for COMMAND (latex platex uplatex lualatex luatex latexmk dvipdfmx dvisvgm dvipng ptex2pdf) \
-    alias $COMMAND="docker-latex $COMMAND"
-
-
