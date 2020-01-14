@@ -93,10 +93,3 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
-" 全角スペースをハイライト
-augroup HighlightFullWidthSpaces
-  autocmd!
-  autocmd VimEnter,Colorscheme * highlight FullWidthSpace cterm=underline
-  autocmd VimEnter * match FullWidthSpace /　/
-augroup END
-
