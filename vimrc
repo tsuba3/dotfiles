@@ -86,4 +86,10 @@ set hlsearch
 " Molokai でコメントの色を少し明るくする
 hi Comment ctermfg=247
 
+" 行末のスペースをハイライト
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
 
