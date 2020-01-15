@@ -158,10 +158,11 @@ fkill() {
 cpprun() {
     TEMP="/tmp/$RANDOM"
     if [ -n "$Boost_INCLUDE_DIR" ]; then
-        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIR" $@ && $TEMP && rm -f $TEMP
+        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIR" $@ && "$TEMP"
     else
-        g++-9 -o "$TEMP" -std=c++14 $@ && $TEMP && rm -f $TEMP
+        g++-9 -o "$TEMP" -std=c++17 $@ && "$TEMP"
     fi
+    rm -f "$TEMP"
 }
 
 # Print color list to terminal
