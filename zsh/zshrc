@@ -204,6 +204,12 @@ function _clear() { clear; [[ -n "$TMUX" ]] && tmux clear; zle reset-prompt; }
 zle -N _clear
 bindkey "^L^L" _clear
 
+# スペースで区切られた単語を移動
+bindkey "^S" vi-backward-blank-word
+bindkey "^F" vi-forward-blank-word
+
+bindkey "^V" edit-command-line
+
 # Pyenv init must be excutated after setting PATH
 if [ -n "$(command -v pyenv)" ]; then
   eval "$(pyenv init -)"
