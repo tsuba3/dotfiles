@@ -5,11 +5,10 @@ ln -f -s ~/.dotfiles/nanorc ~/.nanorc
 ln -f -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 ln -f -s ~/.dotfiles/vimrc ~/.vimrc
 ln -f -s ~/.dotfiles/vim ~/.vim
-ln -f -s ~/.dotfiles/zprezto ~/.zprezto
-ln -f -s ~/.dotfiles/zprezto/runcoms/zpreztorc ~/.zpreztorc
+ln -f -s ~/.dotfiles/zsh/prezto ~/.zprezto
+ln -f -s ~/.dotfiles/zsh/zpreztorc ~/.zpreztorc
 ln -f -s ~/.dotfiles/zsh/zlogin ~/.zlogin
 ln -f -s ~/.dotfiles/zsh/zlogout ~/.zlogout
-ln -f -s ~/.dotfiles/zsh/zprezto ~/.zprezto
 ln -f -s ~/.dotfiles/zsh/zprofile ~/.zprofile
 ln -f -s ~/.dotfiles/zsh/zshenv ~/.zshenv
 ln -f -s ~/.dotfiles/zsh/zshrc ~/.zshrc
