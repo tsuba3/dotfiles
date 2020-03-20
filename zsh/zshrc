@@ -81,6 +81,7 @@ alias curl_time='curl -o /dev/null -s -w  "Connect: %{time_connect} TTFB: %{time
 alias getip='curl ifconfig.me'
 alias getip-all='curl ifconfig.me/all'
 alias getip-json='curl ifconfig.me/all.json'
+alias tu='timer -s -u'
 
 alias flutter-dev-tool='flutter packages pub global run devtools'
 
