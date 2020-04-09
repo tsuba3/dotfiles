@@ -83,6 +83,7 @@ alias getip-all='curl ifconfig.me/all'
 alias getip-json='curl ifconfig.me/all.json'
 alias tu='timer -s -u'
 
+alias compress-pdf='command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf'
 alias flutter-dev-tool='flutter packages pub global run devtools'
 
 
