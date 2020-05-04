@@ -5,7 +5,7 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-ENV_FILE="$HOME/.dotfiles/zsh/env/$(hostname).zsh"
+ENV_FILE="$HOME/.dotfiles/zsh/env/$(hostname | sed -e "s/\.local//g").zsh"
 if [ -e $ENV_FILE ]; then
     source $ENV_FILE
 fi
