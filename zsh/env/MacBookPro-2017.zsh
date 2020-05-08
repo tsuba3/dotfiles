@@ -37,5 +37,6 @@ alias idf="python2 $IDF_PATH/tools/idf.py"
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
-export Boost_INCLUDE_DIR=/usr/local/Cellar/boost/1.73.0/include
+export Boost_INCLUDE_DIRS=/usr/local/include
+export Boost_LIBRARY_DIRS=/usr/local/lib
 
