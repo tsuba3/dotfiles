@@ -85,6 +85,7 @@ alias tu='timer -s -u'
 
 alias compress-pdf='command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf'
 alias flutter-dev-tool='flutter packages pub global run devtools'
+alias clion='open -a /Applications/Clion.app'
 
 
 #
@@ -159,8 +160,8 @@ fkill() {
 # Compile and run a single c++ file.
 cpprun() {
     TEMP="/tmp/$RANDOM"
-    if [ -n "$Boost_INCLUDE_DIR" ]; then
-        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIR" $@ && "$TEMP"
+    if [ -n "$Boost_INCLUDE_DIRS" ]; then
+        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIRS" $@ && "$TEMP"
     else
         g++-9 -o "$TEMP" -std=c++17 $@ && "$TEMP"
     fi

@@ -40,3 +40,5 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export Boost_INCLUDE_DIRS=/usr/local/include
 export Boost_LIBRARY_DIRS=/usr/local/lib
 
+alias cpdf-help="open ~/.cpdf/cpdfmanual.pdf"
+
