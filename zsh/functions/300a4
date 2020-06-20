@@ -1,0 +1,8 @@
+# PDF を 300 DPI のラスタ画像にし A4 に変換する
+300a4() {
+    command gs -dNOPAUSE -r300 -dBATCH -sDEVICE=png16m -sOutputFile="tmp-%02d.png" $1 && convert -density 300 tmp-*png temp-out.pdf
+    cpdf -scale-to-fit a4portrait temp-out.pdf -o ${2:-out.pdf}
+    rm -f tmp-*png temp-out.pdf
+
+}
+

@@ -1,0 +1,14 @@
+# pdfmin - Compress PDF
+pdfmin() {
+    if [ -z "$(command command -v gs)" ]; then
+        echo "Ghostscript not installed."
+        return 1
+    fi
+    if [ ! -e "$1" ]; then
+        echo "File not spqcified."
+        return 2
+    fi
+    command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.6 -dPDFSETTINGS=/ebook \
+    -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$1.min.pdf" "$1"
+}
+

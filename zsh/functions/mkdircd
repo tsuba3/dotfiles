@@ -1,0 +1,6 @@
+# mkdircd - mkdir then cd
+mkdircd() {
+    mkdir $1
+    cd $1
+}
+

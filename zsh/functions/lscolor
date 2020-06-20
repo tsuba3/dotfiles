@@ -1,0 +1,21 @@
+# Print color list to terminal
+lscolor() {
+    echo -n "Kind "
+    for i (`seq 1 9`) echo -n "\e[${i}m\\\\e[${i}m\e[0m  "
+    echo -n "\n"
+    echo -n "Fg   "
+    for i (`seq 30 37`) echo -n "\e[${i}m\\\\e[${i}m\e[0m "
+    echo -n "\n"
+    echo -n "Bg   "
+    for i (`seq 40 47`) echo -n "\e[${i}m\\\\e[${i}m\e[0m "
+    echo "\n"
+    echo "256 Colors"
+    for j (`seq 0 31`); do
+        for i (`seq $((8  * $j)) $((8 * $j + 7))`); do
+            printf "\e[48;5;${i}m%03d\e[0m " $i
+            printf "\e[38;5;${i}m%03d\e[0m " $i
+        done
+        echo -n "\n"
+    done
+}
+

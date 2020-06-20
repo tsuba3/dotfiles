@@ -1,0 +1,10 @@
+# fkill - kill process
+fkill() {
+  local pid options
+  options="$@"
+  pid=$(ps aux | sed 1d | fzf --reverse -m --prompt "kill $options >" | awk '{print $2}')
+  if [ -n $pid ]; then
+    kill $@ "$pid"
+  fi
+}
+

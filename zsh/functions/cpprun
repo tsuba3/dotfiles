@@ -1,0 +1,11 @@
+# Compile and run a single c++ file.
+cpprun() {
+    TEMP="/tmp/$RANDOM"
+    if [ -n "$Boost_INCLUDE_DIRS" ]; then
+        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIRS" $@ && "$TEMP"
+    else
+        g++-9 -o "$TEMP" -std=c++17 $@ && "$TEMP"
+    fi
+    rm -f "$TEMP"
+}
+

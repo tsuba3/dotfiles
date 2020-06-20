@@ -54,6 +54,13 @@ path=(
   $path
 )
 
+# functions 以下の関数を遅延読み込み
+fpath=(
+    "$HOME/.dotfiles/zsh/functions"
+    $fpath
+)
+autoload -U $(ls -1 "$HOME/.dotfiles/zsh/functions")
+
 #
 # Less
 #
@@ -87,115 +94,6 @@ alias compress-pdf='command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFS
 alias flutter-dev-tool='flutter packages pub global run devtools'
 alias clion='open -a /Applications/Clion.app'
 alias pycharm='open -a /Applications/PyCharm.app'
-
-#
-# functions
-#
-
-# mkdircd - mkdir then cd
-mkdircd() {
-    mkdir $1
-    cd $1
-}
-
-# vimcp - edit file with vim and copy it
-vimcp() {
-    vim $1
-    if [ -e $1 ];  then
-        cat $1 | pbcopy
-    else
-        return 1
-    fi
-}
-
-# pdfmin - Compress PDF
-pdfmin() {
-    if [ -z "$(command command -v gs)" ]; then
-        echo "Ghostscript not installed."
-        return 1
-    fi
-    if [ ! -e "$1" ]; then
-        echo "File not spqcified."
-        return 2
-    fi
-    command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.6 -dPDFSETTINGS=/ebook \
-    -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$1.min.pdf" "$1"
-}
-
-# fd - cd to selected directory
-fd() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | grep -v -e "^.$" | fzf --exit-0 +m --ansi --preview-window=bottom:10 --preview 'ls -A {} | head -200') && cd "$dir"
-}
-
-# fd1 - cd to selected directory directory under current
-fd1() {
-  local dir
-  dir=$(find ${1:-.} -maxdepth 1 -type d 2> /dev/null | grep -v -e "^.$" | fzf --exit-0 +m --ansi --preview-window=bottom:10 --preview 'ls -A {} | head -200') && cd "$dir"
-}
-
-# fo - open or edit a file.
-#   - CTRL-O to open with `open` command,
-#   - CTRL-E or Enter key to open with the $EDITOR
-fo() {
-  local out file key
-  IFS=$'\n' out=("$(fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e --preview-window=bottom:15 --preview "head -200 {}" --header "ctrl-o to open with open command, enter to open with $EDITOR")")
-  key=$(head -1 <<< "$out")
-  file=$(head -2 <<< "$out" | tail -1)
-  if [ -n "$file" ]; then
-    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
-  fi
-}
-
-# fkill - kill process
-fkill() {
-  local pid options
-  options="$@"
-  pid=$(ps aux | sed 1d | fzf --reverse -m --prompt "kill $options >" | awk '{print $2}')
-  if [ -n $pid ]; then
-    kill $@ "$pid"
-  fi
-}
-
-# Compile and run a single c++ file.
-cpprun() {
-    TEMP="/tmp/$RANDOM"
-    if [ -n "$Boost_INCLUDE_DIRS" ]; then
-        g++-9 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIRS" $@ && "$TEMP"
-    else
-        g++-9 -o "$TEMP" -std=c++17 $@ && "$TEMP"
-    fi
-    rm -f "$TEMP"
-}
-
-# Print color list to terminal
-lscolor() {
-    echo -n "Kind "
-    for i (`seq 1 9`) echo -n "\e[${i}m\\\\e[${i}m\e[0m  "
-    echo -n "\n"
-    echo -n "Fg   "
-    for i (`seq 30 37`) echo -n "\e[${i}m\\\\e[${i}m\e[0m "
-    echo -n "\n"
-    echo -n "Bg   "
-    for i (`seq 40 47`) echo -n "\e[${i}m\\\\e[${i}m\e[0m "
-    echo "\n"
-    echo "256 Colors"
-    for j (`seq 0 31`); do
-        for i (`seq $((8  * $j)) $((8 * $j + 7))`); do
-            printf "\e[48;5;${i}m%03d\e[0m " $i
-            printf "\e[38;5;${i}m%03d\e[0m " $i
-        done
-        echo -n "\n"
-    done
-}
-
-# PDF を 300 DPI のラスタ画像にし A4 に変換する
-300a4() {
-    command gs -dNOPAUSE -r300 -dBATCH -sDEVICE=png16m -sOutputFile="tmp-%02d.png" $1 && convert -density 300 tmp-*png temp-out.pdf
-    cpdf -scale-to-fit a4portrait temp-out.pdf -o ${2:-out.pdf}
-    rm -f tmp-*png temp-out.pdf
-
-}
 
 setopt nonomatch
 

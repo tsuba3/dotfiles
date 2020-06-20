@@ -1,0 +1,6 @@
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | grep -v -e "^.$" | fzf --exit-0 +m --ansi --preview-window=bottom:10 --preview 'ls -A {} | head -200') && cd "$dir"
+}
+
