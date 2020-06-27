@@ -1,0 +1,40 @@
+# Atcoder template を作成
+# B
+# カレントディレクトリに CMakeLists.txt と
+# 引数で指定した名前を持つ cpp ファイルを作成
+
+cppinit() {
+    if [ "$#" = 0 ]; then
+        echo "Pass one argument to create a cpp file"
+        echo "Pass project name and file names to create a CMake project"
+        return 1
+    fi
+    if [ "$#" = 1 ]; then
+        cppinit_file $1
+        return 0
+    fi
+    PROJECT="$1"
+    shift
+    cat <<EOF > CMakeLists.txt
+project($PROJECT)
+cmake_minimum_required(VERSION 3.15)
+set(CMAKE_CXX_FLAGS "-O2 -std=c++17 -Wall")
+set(CMAKE_CXX_STANDARD 17)
+find_package(BOOST)
+include_directories(\${Boost_INCLUDE_DIRS})
+EOF
+while [ -n "$1" ]; do
+    echo "add_executable(${PROJECT}${1} ${1}.cpp)" >> CMakeLists.txt
+    cppinit_file $1
+    shift
+done
+}
+
+cppinit_file() {
+    cp "$ATCODER_TEMPLATE/cpp.cpp" ${1}.cpp
+
+    echo "/*" >> ${1}.cpp
+    figlet "${1}.cpp" | sed -e "s/ *$//g" | sed "/^$/d" >> ${1}.cpp
+    echo "*/" >> ${1}.cpp
+}
+

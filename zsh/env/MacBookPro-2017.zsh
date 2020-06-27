@@ -42,3 +42,5 @@ export Boost_LIBRARY_DIRS=/usr/local/lib
 
 alias cpdf-help="open ~/.cpdf/cpdfmanual.pdf"
 
+export ATCODER_TEMPLATE="$HOME/Documents/Projects/atcoder/0templates"
+
