@@ -40,7 +40,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export Boost_INCLUDE_DIRS=/usr/local/include
 export Boost_LIBRARY_DIRS=/usr/local/lib
 
-export Qt5_DIR=`brew --prefix qt`
+export Qt5_DIR=`/usr/local/bin/brew --prefix qt`
 export PATH="$PATH:$Qt5_DIR/bin"
 
 alias cpdf-help="open ~/.cpdf/cpdfmanual.pdf"
