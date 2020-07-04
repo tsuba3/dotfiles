@@ -4,6 +4,14 @@
 # 引数で指定した名前を持つ cpp ファイルを作成
 
 cppinit() {
+    cppinit_file() {
+        cp "$ATCODER_TEMPLATE/cpp.cpp" ${1}.cpp
+
+        echo "/*" >> ${1}.cpp
+        figlet "${1}.cpp" | sed -e "s/ *$//g" | sed "/^$/d" >> ${1}.cpp
+        echo "*/" >> ${1}.cpp
+    }
+
     if [ "$#" = 0 ]; then
         echo "Pass one argument to create a cpp file"
         echo "Pass project name and file names to create a CMake project"
@@ -28,13 +36,5 @@ while [ -n "$1" ]; do
     cppinit_file $1
     shift
 done
-}
-
-cppinit_file() {
-    cp "$ATCODER_TEMPLATE/cpp.cpp" ${1}.cpp
-
-    echo "/*" >> ${1}.cpp
-    figlet "${1}.cpp" | sed -e "s/ *$//g" | sed "/^$/d" >> ${1}.cpp
-    echo "*/" >> ${1}.cpp
 }
 
