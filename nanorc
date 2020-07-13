@@ -1,4 +1,4 @@
-include "/usr/local/Cellar/nano/4.7/share/nano/*.nanorc"
+include "/usr/local/opt/nano/share/nano/*.nanorc"
 set nowrap
 set smooth
 set suspend
