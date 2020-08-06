@@ -121,7 +121,7 @@ bindkey "^V" edit-command-line
 
 # Pyenv init must be excutated after setting PATH
 if [ -n "$(command -v pyenv)" ]; then
-  eval "$(pyenv init -)"
+  eval "$(pyenv init - --no-rehash)"
 fi
 
 # zsh-syntax-highlighting must be after all zle modules
