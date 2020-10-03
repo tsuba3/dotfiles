@@ -1,0 +1,7 @@
+pdfdpi() {
+    TEMP="/tmp/$RANDOM$RANDOM"
+    mkdir "$TEMP"
+    convert -density ${2:-300} $1 "$TEMP/1.jpg"
+    convert "$TEMP/1-*.jpg" out.pdf
+    rm -rf "$TEMP"
+}
