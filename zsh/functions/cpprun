@@ -1,11 +1,32 @@
+#!/bin/zsh
 # Compile and run a single c++ file.
 cpprun() {
-    TEMP="/tmp/$RANDOM"
-    if [ -n "$Boost_INCLUDE_DIRS" ]; then
-        g++-10 -o "$TEMP" -std=c++17 -I "$Boost_INCLUDE_DIRS" $@ && "$TEMP"
-    else
-        g++-10 -o "$TEMP" -std=c++17 $@ && "$TEMP"
+    if [ -z "$CPPRUN_EXECUTABLE" ]; then
+        export CPPRUN_EXECUTABLE="/tmp/$RANDOM"
     fi
-    rm -f "$TEMP"
+
+    SOURCE="${@:$#}"
+    SOURCE="$SOURCE:A"
+
+    if [ "$CPPRUN_SOURCE" != "$SOURCE" ]; then
+        export CPPRUN_SOURCE="$SOURCE"
+        rm -f "$CPPRUN_EXECUTABLE"
+    fi
+
+    if [ ! -f "$CPPRUN_EXECUTABLE" ] || [ "$CPPRUN_EXECUTABLE" -ot "$CPPRUN_SOURCE" ]; then
+        if [ -n "$Boost_INCLUDE_DIRS" ]; then
+            g++-10 -o "$CPPRUN_EXECUTABLE" -std=c++17 -I "$Boost_INCLUDE_DIRS" $@
+        else
+            g++-10 -o "$CPPRUN_EXECUTABLE" -std=c++17 $@
+        fi
+        if [ $? -eq 0 ]; then
+            echo "--- Compile Done ---"
+        else
+            echo "--- Compile Failed ---"
+            return 1
+        fi
+    fi
+
+    "$CPPRUN_EXECUTABLE"
 }
 
