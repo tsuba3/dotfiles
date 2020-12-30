@@ -96,6 +96,10 @@ alias idea='open -a "/Applications/IntelliJ IDEA.app"'
 alias clion='open -a /Applications/Clion.app'
 alias pycharm='open -a /Applications/PyCharm.app'
 
+alias t1='timer -s 1m && ringtone'
+alias t3='timer -s 3m && ringtone'
+alias t5='timer -s 5m && ringtone'
+
 setopt nonomatch
 
 # Auto suggestions of command
