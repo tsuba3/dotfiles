@@ -21,9 +21,12 @@ export PATH="$PATH:$HOME/.cpdf/OSX-Intel"
 
 alias cpdf-help="open ~/.cpdf/cpdfmanual.pdf"
 
+alias ringtone="afplay ~/.assets/iphone_ringtone.mp3"
+
 export ATCODER_TEMPLATE="$HOME/Documents/Projects/atcoder/0templates"
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="$HOME/.bin:$PATH"
 
 # TeX Live
 export MANPATH="$MANPATH:/usr/local/texlive/2020/texmf-dist.doc/man"
