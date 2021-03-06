@@ -30,6 +30,7 @@ set(CMAKE_CXX_FLAGS "-O2 -std=c++17 -Wall")
 set(CMAKE_CXX_STANDARD 17)
 find_package(BOOST)
 include_directories(\${Boost_INCLUDE_DIRS})
+include_directories(\$ENV{ATCODER_TEMPLATE}/ac-library)
 EOF
 while [ -n "$1" ]; do
     echo "add_executable(${PROJECT}${1} ${1}.cpp)" >> CMakeLists.txt
