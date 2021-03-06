@@ -97,8 +97,15 @@ alias clion='open -a /Applications/Clion.app'
 alias pycharm='open -a /Applications/PyCharm.app'
 
 alias t1='timer -s 1m && ringtone'
+alias t2='timer -s 2m && ringtone'
 alias t3='timer -s 3m && ringtone'
+alias t4='timer -s 4m && ringtone'
 alias t5='timer -s 5m && ringtone'
+alias t6='timer -s 6m && ringtone'
+alias t7='timer -s 7m && ringtone'
+alias t8='timer -s 8m && ringtone'
+alias t9='timer -s 9m && ringtone'
+alias t10='timer -s 10m && ringtone'
 
 setopt nonomatch
 
@@ -128,6 +135,10 @@ bindkey "^V" edit-command-line
 if [ -n "$(command -v pyenv)" ]; then
   eval "$(pyenv init - --no-rehash)"
 fi
+
+# rbenv
+export PATH="$PATH:$HOME/.rbenv/bin"
+eval "$(rbenv init -)"
 
 # zsh-syntax-highlighting must be after all zle modules
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
