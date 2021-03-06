@@ -14,11 +14,14 @@ cpprun() {
     fi
 
     if [ ! -f "$CPPRUN_EXECUTABLE" ] || [ "$CPPRUN_EXECUTABLE" -ot "$CPPRUN_SOURCE" ]; then
+        OPT=("-std=c++17")
         if [ -n "$Boost_INCLUDE_DIRS" ]; then
-            g++-10 -o "$CPPRUN_EXECUTABLE" -std=c++17 -I "$Boost_INCLUDE_DIRS" $@
-        else
-            g++-10 -o "$CPPRUN_EXECUTABLE" -std=c++17 $@
+            OPT=($OPT "-I" "$Boost_INCLUDE_DIRS")
         fi
+        if [ -n "$ATCODER_TEMPLATE" ]; then
+            OPT=($OPT "-I" "$ATCODER_TEMPLATE/ac-library")
+        fi
+        g++-10 -o "$CPPRUN_EXECUTABLE" $OPT $@
         if [ $? -eq 0 ]; then
             echo "--- Compile Done ---"
         else
