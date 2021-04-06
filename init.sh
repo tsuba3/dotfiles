@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git submodule update --init --recursive
+
 ln -f -s ~/.dotfiles/gitconfig ~/.gitconfig
 ln -f -s ~/.dotfiles/nanorc ~/.nanorc
 ln -f -s ~/.dotfiles/tmux.conf ~/.tmux.conf
