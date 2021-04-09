@@ -131,14 +131,16 @@ bindkey "^F" vi-forward-blank-word
 
 bindkey "^V" edit-command-line
 
+# rbenv
+export PATH="$PATH:$HOME/.rbenv/bin"
+if [ -n "$(command -v rbenv)" ]; then
+  eval "$(rbenv init -)"
+fi
+
 # Pyenv init must be excutated after setting PATH
 if [ -n "$(command -v pyenv)" ]; then
   eval "$(pyenv init - --no-rehash)"
 fi
-
-# rbenv
-export PATH="$PATH:$HOME/.rbenv/bin"
-eval "$(rbenv init -)"
 
 # zsh-syntax-highlighting must be after all zle modules
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
