@@ -139,7 +139,13 @@ fi
 
 # Pyenv init must be excutated after setting PATH
 if [ -n "$(command -v pyenv)" ]; then
+  eval "$(pyenv init --path)"
   eval "$(pyenv init - --no-rehash)"
+fi
+
+# Nodenv
+if [ -n "$(command -v nodenv)" ]; then
+    eval "$(nodenv init -)"
 fi
 
 # zsh-syntax-highlighting must be after all zle modules
