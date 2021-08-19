@@ -3,7 +3,16 @@
 # Please adapt and uncomment the following lines:
 	name = Tsubasa Munekata
 	email = tsubasa.afe@gmail.com
+	signingkey = 35DC62542237F975
 [core]
 	autocrlf = input
 	quotepath = false
 
+[init]
+	defaultBranch = main
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[fetch]
+	prune = true

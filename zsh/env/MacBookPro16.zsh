@@ -16,9 +16,12 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export Boost_INCLUDE_DIRS=/opt/boost/include
 export Boost_LIBRARY_DIRS=/opt/boost/lib
 
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.pyenv/bin"
 export PATH="$PATH:$HOME/.nodenv/bin"
 export PATH="$PATH:$HOME/.cpdf/OSX-Intel"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+alias flutter='fvm flutter'
 
 alias cpdf-help="open ~/.cpdf/cpdfmanual.pdf"
 
@@ -50,4 +53,5 @@ wiki() {
 }
 
 export FW_CONFIG_FILE="$HOME/.atomate/config/FW_config.yaml"
+export ATOMATE_DB_FILE="$HOME/.atomate/config/db.json"
 
