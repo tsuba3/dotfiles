@@ -80,6 +80,10 @@ fi
 #
 # alias
 #
+alias_open_with_app() {
+    [ -e "$2" ] && alias $1="open -a '$2'"
+}
+
 alias dc='docker-compose'
 alias gs='git status'
 alias gc='git commit'
@@ -92,9 +96,10 @@ alias tu='timer -s -u'
 
 alias compress-pdf='command gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf'
 alias flutter-dev-tool='flutter packages pub global run devtools'
-alias idea='open -a "/Applications/IntelliJ IDEA.app"'
-alias clion='open -a /Applications/Clion.app'
-alias pycharm='open -a /Applications/PyCharm.app'
+alias_open_with_app idea "/Applications/IntelliJ IDEA.app"
+alias_open_with_app pycharm "/Applications/Pycharm.app"
+alias_open_with_app clion "/Applications/Clion.app"
+alias_open_with_app slack "/Applications/Slack.app"
 
 alias t1='timer -s 1m && ringtone'
 alias t2='timer -s 2m && ringtone'
@@ -131,6 +136,15 @@ bindkey "^F" vi-forward-blank-word
 
 bindkey "^V" edit-command-line
 
+# Completion
+if [ -n "$(command -v kubectl)" ]; then
+    source <(kubectl completion zsh)
+fi
+if [ -e "$HOME/.gcloud/completion.zsh.inc" ]; then
+    source "$HOME/.gcloud/completion.zsh.inc"
+fi
+
+
 # rbenv
 export PATH="$PATH:$HOME/.rbenv/bin"
 if [ -n "$(command -v rbenv)" ]; then
@@ -149,6 +163,11 @@ if [ -n "$(command -v pyenv)" ]; then
   eval "$(pyenv init - --no-rehash)"
 fi
 
+# Rbenv
+if [ -n "$(command -v rbenv)" ]; then
+    eval "$(rbenv init - zsh)"
+fi
+
 # Nodenv
 if [ -n "$(command -v nodenv)" ]; then
     eval "$(nodenv init -)"
@@ -156,3 +175,5 @@ fi
 
 # zsh-syntax-highlighting must be after all zle modules
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
