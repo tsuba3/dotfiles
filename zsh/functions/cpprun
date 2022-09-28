@@ -21,7 +21,7 @@ cpprun() {
         if [ -n "$ATCODER_TEMPLATE" ]; then
             OPT=($OPT "-I" "$ATCODER_TEMPLATE/ac-library")
         fi
-        g++-10 -o "$CPPRUN_EXECUTABLE" $OPT $@
+        g++-11 -o "$CPPRUN_EXECUTABLE" $OPT $@
         if [ $? -eq 0 ]; then
             echo "--- Compile Done ---"
         else

@@ -11,7 +11,7 @@
 [init]
 	defaultBranch = main
 [gpg]
-	program = gpg
+	program = /usr/local/bin/gpg
 [commit]
 	gpgsign = true
 [fetch]

@@ -173,6 +173,8 @@ if [ -n "$(command -v nodenv)" ]; then
     eval "$(nodenv init -)"
 fi
 
+source $(brew --prefix asdf)/libexec/asdf.sh
+
 # zsh-syntax-highlighting must be after all zle modules
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
