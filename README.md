@@ -3,7 +3,7 @@
 ### ダウンロード
 
 ```
-git clone https://github.com/tsuba3/dotfiles.git ~/.dotfiles
+git clone git@github.com:tsuba3/dotfiles.git ~/.dotfiles
 ```
 
 ### インストール
