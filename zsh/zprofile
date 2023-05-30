@@ -11,7 +11,7 @@ while [ -z $NO_DEFAULT_TMUX ] && [[ ! -n $TMUX ]]; do
     echo "TMUX is not installed. Starting terminal normally."
     break
   fi
-  if [[ -n "$INTELLIJ_ENVIRONMENT_READER" ]] || [[ "x${VSCODE}" = "xYES" ]]; then
+  if [[ -n "$INTELLIJ_ENVIRONMENT_READER" ]] || [[ -n "${VSCODE_CWD}" ]]; then
       break
   fi
   if [[ ! -n "$(command -v fzf)" ]]; then

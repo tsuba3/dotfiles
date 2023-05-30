@@ -87,6 +87,7 @@ alias_open_with_app() {
 alias dc='docker compose'
 alias gs='git status'
 alias gc='git commit'
+alias gr='cd "$(git rev-parse --show-toplevel)"'
 alias curl_header='curl -D - -s -o /dev/null'
 alias curl_time='curl -o /dev/null -s -w  "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n"'
 alias getip='curl ifconfig.me'
