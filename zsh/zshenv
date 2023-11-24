@@ -9,5 +9,7 @@ ENV_FILE="$HOME/.dotfiles/zsh/env/$(hostname | sed -e "s/\.local//g").zsh"
 if [ -e $ENV_FILE ]; then
     source $ENV_FILE
 fi
-source ~/.dotfiles/zsh/zshenv.adhoc.zsh
+if [ -e ~/.dotfiles/zsh/zshenv.adhoc.zsh ]; then
+    source ~/.dotfiles/zsh/zshenv.adhoc.zsh
+fi
 

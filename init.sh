@@ -2,6 +2,11 @@
 
 git submodule update --init --recursive
 
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/colors/molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+
 ln -f -s ~/.dotfiles/gitconfig ~/.gitconfig
 ln -f -s ~/.dotfiles/nanorc ~/.nanorc
 ln -f -s ~/.dotfiles/tmux.conf ~/.tmux.conf
